@@ -35,12 +35,41 @@ class ContactIndex extends React.Component {
       ],
     };
   }
+  handleAddContact = (newContact) => {
+    if (newContact.name == '') {
+      return { status: 'failure', mgs: 'Please Enter a valid name' };
+    } else if (newContact.phone == '') {
+      return { status: 'failure', mgs: 'Please Enter a valid Number' };
+    }
+    const duplicateRecord = this.state.contactList.filter((x) => {
+      if (x.name == newContact.name || x.phone == newContact.phone) {
+        return true;
+      }
+    });
+    if (duplicateRecord.length > 0) {
+      return { status: 'failre', mgs: 'Duplicate Record' };
+    } else {
+      const newFinalContact = {
+        ...newContact,
+        id: this.state.contactList[this.state.contactList.length - 1].id + 1,
+        isFav: false,
+      };
+      //   alert('Hello');
+      this.setState((prevS) => {
+        return {
+          contactList: prevS.contactList.concat([newFinalContact]),
+        };
+      });
+    }
+    return { status: 'success', msg: 'Contact was added successfully' };
+  };
+
   render() {
     return (
       <div>
         <Header></Header>
         <div className="container" style={{ minHeight: '85vh' }}>
-          <div className="row">
+          <div className="row mt-4">
             <div className="col-4 offset-2 ">
               <AddRandomContact></AddRandomContact>
             </div>
@@ -49,7 +78,9 @@ class ContactIndex extends React.Component {
             </div>
             <div className="row py-2   text-center">
               <div className="col-8 offset-2 row ">
-                <AddContact></AddContact>
+                <AddContact
+                  handleAddContact={this.handleAddContact}
+                ></AddContact>
               </div>
             </div>
             <div className="row py-2">
