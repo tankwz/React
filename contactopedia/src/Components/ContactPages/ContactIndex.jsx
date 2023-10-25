@@ -46,21 +46,29 @@ class ContactIndex extends React.Component {
             </div>
             <div className="col-4">
               <RemoveAllContact></RemoveAllContact>
-            </div>{' '}
-            <div className="row py-2 justify-content-center  text-center">
-              <AddContact></AddContact>
-            </div>{' '}
-            <div className="row py-2">
-              <FavContacts
-                contacts={this.state.contactList.filter((a) => a.isFav == true)}
-              ></FavContacts>
+            </div>
+            <div className="row py-2   text-center">
+              <div className="col-8 offset-2 row ">
+                <AddContact></AddContact>
+              </div>
             </div>
             <div className="row py-2">
-              <GeneralContacts
-                contacts={this.state.contactList.filter(
-                  (a) => a.isFav == false
-                )}
-              ></GeneralContacts>
+              <div className="col-8 offset-2 row ">
+                <FavContacts
+                  contacts={this.state.contactList.filter(
+                    (a) => a.isFav == true
+                  )}
+                ></FavContacts>
+              </div>
+            </div>
+            <div className="row py-2">
+              <div className="col-8 offset-2 row ">
+                <GeneralContacts
+                  contacts={this.state.contactList.filter(
+                    (a) => a.isFav == false
+                  )}
+                ></GeneralContacts>
+              </div>
             </div>
           </div>
         </div>
