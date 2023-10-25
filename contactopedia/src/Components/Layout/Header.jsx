@@ -1,4 +1,4 @@
-import logo from './img/logo192.png';
+import logo from '../../img/logo192.png';
 
 export default () => {
   return (
@@ -10,7 +10,7 @@ export default () => {
         <img src={logo} className="img-fluid " style={{ height: '100px' }} />
       </div>
       <div className="col-8 align-items-center d-flex  ">
-        <span className="h2 pt-4 text-white">React Course - Countopedia</span>
+        <span className="h2 pt-4 text-white">React Course - ContactOpedia</span>
       </div>
       <div className="col"></div>
     </div>

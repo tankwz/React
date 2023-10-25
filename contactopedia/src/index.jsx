@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './darkly.css';
-import Header from './Header';
+import ContactIndex from './Components/ContactPages/ContactIndex';
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Header></Header>);
+root.render(<ContactIndex></ContactIndex>);
