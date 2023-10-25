@@ -17,6 +17,7 @@ class AddContact extends React.Component {
       email: email,
       phone: phone,
     });
+
     if (response.status === 'success') {
       this.setState({ errorMessage: undefined, successMessage: response.msg });
       document.querySelector('.contact-form').reset();
@@ -55,6 +56,21 @@ class AddContact extends React.Component {
                 name="contactPhone"
               />
             </div>
+
+            {this.state.errorMessage == undefined ? (
+              <div></div>
+            ) : (
+              <div className="col-12 text-center text-danger">
+                {this.state.errorMessage}
+              </div>
+            )}
+            {this.state.successMessage == undefined ? (
+              <div></div>
+            ) : (
+              <div className="col-12 text-center text-success">
+                {this.state.successMessage}
+              </div>
+            )}
 
             <div>
               <button className="btn btn-primary btn-sm form-control">

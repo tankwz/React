@@ -37,17 +37,17 @@ class ContactIndex extends React.Component {
   }
   handleAddContact = (newContact) => {
     if (newContact.name == '') {
-      return { status: 'failure', mgs: 'Please Enter a valid name' };
+      return { status: 'failure', msg: 'Please Enter a valid name' };
     } else if (newContact.phone == '') {
-      return { status: 'failure', mgs: 'Please Enter a valid Number' };
+      return { status: 'failure', msg: 'Please Enter a valid Number' };
     }
     const duplicateRecord = this.state.contactList.filter((x) => {
-      if (x.name == newContact.name || x.phone == newContact.phone) {
+      if (x.name == newContact.name && x.phone == newContact.phone) {
         return true;
       }
     });
     if (duplicateRecord.length > 0) {
-      return { status: 'failre', mgs: 'Duplicate Record' };
+      return { status: 'failre', msg: 'Duplicate Record' };
     } else {
       const newFinalContact = {
         ...newContact,
