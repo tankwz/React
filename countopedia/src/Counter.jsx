@@ -50,7 +50,7 @@ export default class Counter extends React.Component {
   };
   reset = () => {
     this.setState(() => {
-      return { count: 0 };
+      return { count: 0, result: '', previous: '' };
     });
   };
 
