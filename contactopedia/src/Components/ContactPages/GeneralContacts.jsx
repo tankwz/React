@@ -14,6 +14,7 @@ const GeneralContacts = (props) => {
             key={index}
             handleToggleFav={props.handleToggleFav}
             handleDeleteContact={props.handleDeleteContact}
+            handleUpdateContact={props.handleUpdateContact}
           ></ContactIndividual>
         ))}
       </div>

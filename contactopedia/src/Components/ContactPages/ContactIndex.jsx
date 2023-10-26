@@ -33,6 +33,8 @@ class ContactIndex extends React.Component {
           isFav: true,
         },
       ],
+      selectedContact: undefined,
+      isUpdating: false,
     };
   }
   handleAddContact = (newContact) => {
@@ -94,7 +96,7 @@ class ContactIndex extends React.Component {
   handleRandomContact = (contact) => {
     const newContact = {
       ...contact,
-      id: this.state.contactList[this.state.contactList.length - 1] + 1,
+      id: this.state.contactList[this.state.contactList.length - 1].id + 1,
       isFav: false,
     };
     this.setState((prevS) => {
@@ -104,6 +106,21 @@ class ContactIndex extends React.Component {
     });
   };
 
+  handleRemoveAll = () => {
+    this.setState(() => {
+      return { contactList: [] };
+    });
+  };
+  handleUpdateContact = (contact) => {
+    console.log(contact);
+
+    this.setState((preV) => {
+      return {
+        selectedContact: contact,
+        isUpdating: true,
+      };
+    });
+  };
   render() {
     return (
       <div>
@@ -116,12 +133,16 @@ class ContactIndex extends React.Component {
               ></AddRandomContact>
             </div>
             <div className="col-4 row">
-              <RemoveAllContact></RemoveAllContact>
+              <RemoveAllContact
+                handleRemoveAll={this.handleRemoveAll}
+              ></RemoveAllContact>
             </div>
             <div className="row py-2   text-center">
               <div className="col-8 offset-2 row ">
                 <AddContact
                   handleAddContact={this.handleAddContact}
+                  selectedContact={this.state.selectedContact}
+                  isUpdating={this.state.isUpdating}
                 ></AddContact>
               </div>
             </div>
@@ -133,6 +154,7 @@ class ContactIndex extends React.Component {
                   )}
                   handleToggleFav={this.handleToggleFav}
                   handleDeleteContact={this.handleDeleteContact}
+                  handleUpdateContact={this.handleUpdateContact}
                 ></FavContacts>
               </div>
             </div>
@@ -144,6 +166,7 @@ class ContactIndex extends React.Component {
                   )}
                   handleToggleFav={this.handleToggleFav}
                   handleDeleteContact={this.handleDeleteContact}
+                  handleUpdateContact={this.handleUpdateContact}
                 ></GeneralContacts>
               </div>
             </div>

@@ -34,7 +34,9 @@ class AddContact extends React.Component {
           className="contact-form"
         >
           <div className="row">
-            <div className="col-12 text-white-50">Add new Contact</div>
+            <div className="col-12 text-white-50">
+              {this.props.isUpdating ? ' Update Contact' : 'Add New Contact'}
+            </div>
             <div className="col-12 col-md-4 p-1 ">
               <input
                 type="form-control form-control-sm"

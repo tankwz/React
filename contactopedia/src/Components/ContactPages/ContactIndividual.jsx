@@ -39,7 +39,10 @@ const ContactIndividual = (props) => {
         </button>
       </div>
       <div className="col-2 col-md-2 pt-md-3 ">
-        <button className={`btn btn-sm border  m-1 btn-primary`}>
+        <button
+          onClick={() => props.handleUpdateContact(props.contact)}
+          className={`btn btn-sm border  m-1 btn-primary`}
+        >
           <i className="bi bi-pencil-square" style={{ fontSize: '1rem' }}></i>
         </button>
         <button
