@@ -4,11 +4,12 @@ import './darkly.css';
 
 import Header from './Components/Layout/Header';
 import Footer from './Components/Layout/Footer';
+import ClassBase from './ClassBase';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
     <Header></Header>
-    <Footer></Footer>
+    <ClassBase />
   </div>
 );

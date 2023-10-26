@@ -10,7 +10,7 @@ export default () => {
         <img src={logo} className="img-fluid " style={{ height: '100px' }} />
       </div>
       <div className="col-8 align-items-center d-flex  ">
-        <span className="h2 pt-4 text-white">React Course - ContactOpedia</span>
+        <span className="h2 pt-4 text-white">React Course - Cyclopedia</span>
       </div>
       <div className="col"></div>
     </div>
