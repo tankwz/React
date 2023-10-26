@@ -14,7 +14,7 @@ const FavContacts = (props) => {
             key={index}
             handleToggleFav={props.handleToggleFav}
             handleDeleteContact={props.handleDeleteContact}
-            handleUpdateContact={props.handleUpdateContact}
+            handleUpdateClick={props.handleUpdateClick}
           ></ContactIndividual>
         ))}
       </div>

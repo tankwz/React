@@ -111,7 +111,7 @@ class ContactIndex extends React.Component {
       return { contactList: [] };
     });
   };
-  handleUpdateContact = (contact) => {
+  handleUpdateClick = (contact) => {
     console.log(contact);
 
     this.setState((preV) => {
@@ -128,6 +128,33 @@ class ContactIndex extends React.Component {
         selectedContact: undefined,
       };
     });
+  };
+  handleUpdateContact = (contact) => {
+    console.log(contact);
+    if (contact.name === '') {
+      return { status: 'failure', msg: 'Please Enter a valid name' };
+    } else if (contact.phone === '') {
+      return { status: 'failure', msg: 'Please Enter a valid Number' };
+    }
+    this.setState((preV) => {
+      return {
+        contactList: preV.contactList.map((item) => {
+          if (item.id == contact.id) {
+            return {
+              ...item,
+              name: contact.name,
+              email: contact.email,
+              phone: contact.phone,
+            };
+          }
+          return item;
+        }),
+        isUpdating: false,
+        SelectedContact: undefined,
+      };
+    });
+
+    return { status: 'success', msg: 'Contact was updated successfully' };
   };
   render() {
     return (
@@ -152,6 +179,7 @@ class ContactIndex extends React.Component {
                   selectedContact={this.state.selectedContact}
                   isUpdating={this.state.isUpdating}
                   cancelUpdateContact={this.cancelUpdateContact}
+                  handleUpdateContact={this.handleUpdateContact}
                 ></AddContact>
               </div>
             </div>
@@ -163,7 +191,7 @@ class ContactIndex extends React.Component {
                   )}
                   handleToggleFav={this.handleToggleFav}
                   handleDeleteContact={this.handleDeleteContact}
-                  handleUpdateContact={this.handleUpdateContact}
+                  handleUpdateClick={this.handleUpdateClick}
                 ></FavContacts>
               </div>
             </div>
@@ -175,7 +203,7 @@ class ContactIndex extends React.Component {
                   )}
                   handleToggleFav={this.handleToggleFav}
                   handleDeleteContact={this.handleDeleteContact}
-                  handleUpdateContact={this.handleUpdateContact}
+                  handleUpdateClick={this.handleUpdateClick}
                 ></GeneralContacts>
               </div>
             </div>
