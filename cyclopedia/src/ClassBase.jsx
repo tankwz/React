@@ -31,6 +31,16 @@ class ClassBase extends React.Component {
   componentWillUnmount() {
     console.log('componentWillUnmount');
   }
+  handleAddStudent = () => {
+    this.setState((preV) => {
+      return { studentCount: preV.studentCount + 1 };
+    });
+  };
+  handleRemoveAll = () => {
+    this.setState(() => {
+      return { studentCount: 0 };
+    });
+  };
 
   render() {
     console.log('render--------------');
@@ -39,11 +49,30 @@ class ClassBase extends React.Component {
         <div className="row">
           {this.state.instructor && (
             <div className="col-12">
-              <p>{this.state.instructor.name}</p>
-              <p>{this.state.instructor.email}</p>
-              <p>{this.state.instructor.phone}</p>
+              <h5 className="text-info">Instructor</h5>
+              <p>Name: {this.state.instructor.name}</p>
+              <p>Email: {this.state.instructor.email}</p>
+              <p>Phone: {this.state.instructor.phone}</p>
+              <i className=" bi bi-toggle-off btn btn-success btn-sml"></i>
             </div>
           )}
+          <div className="col-12">
+            <span className="h4 text-success">Student</span>
+            <div>Student Count: {this.state.studentCount}</div>
+            <button
+              onClick={this.handleAddStudent}
+              className="btn btn-info btn-sm"
+            >
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add Student
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </button>
+            <button
+              onClick={this.handleRemoveAll}
+              className="btn btn-danger btn-sm"
+            >
+              Remove All Student{' '}
+            </button>
+          </div>
         </div>
       </div>
     );
