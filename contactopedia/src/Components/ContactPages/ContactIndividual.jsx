@@ -42,7 +42,12 @@ const ContactIndividual = (props) => {
         <button className={`btn btn-sm border  m-1 btn-primary`}>
           <i className="bi bi-pencil-square" style={{ fontSize: '1rem' }}></i>
         </button>
-        <button className={`btn btn-sm border  m-1 btn-danger`}>
+        <button
+          onClick={() => {
+            props.handleDeleteContact(props.contact.id);
+          }}
+          className={`btn btn-sm border  m-1 btn-danger`}
+        >
           <i className="bi bi-trash3" style={{ fontSize: '1rem' }}></i>
         </button>
       </div>
