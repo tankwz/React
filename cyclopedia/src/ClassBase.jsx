@@ -9,6 +9,8 @@ class ClassBase extends React.Component {
       studentList: [],
       studentCount: 0,
       hideInstructor: false,
+      inputName: '',
+      inputFeedBack: '',
     };
   }
   componentDidMount = async () => {
@@ -56,6 +58,26 @@ class ClassBase extends React.Component {
               <i className=" bi bi-toggle-off btn btn-success btn-sml"></i>
             </div>
           )}
+          <div>
+            <span className="h4 text-success ">FeedBack</span>
+            <br />
+            <input
+              type="text"
+              value={this.state.inputName}
+              onChange={(e) => {
+                this.setState({ inputName: e.target.value });
+              }}
+            />
+            Value: {this.state.inputName}
+            <br />
+            <textarea
+              name=""
+              id=""
+              value={this.state.inputFeedBack}
+              onChange={(e) => this.setState({ inputFeedBack: e.target.value })}
+            ></textarea>
+            Value: {this.state.inputFeedBack}
+          </div>
           <div className="col-12">
             <span className="h4 text-success">Student</span>
             <div>Student Count: {this.state.studentCount}</div>
