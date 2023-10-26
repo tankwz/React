@@ -121,6 +121,14 @@ class ContactIndex extends React.Component {
       };
     });
   };
+  cancelUpdateContact = () => {
+    this.setState(() => {
+      return {
+        isUpdating: false,
+        selectedContact: undefined,
+      };
+    });
+  };
   render() {
     return (
       <div>
@@ -143,6 +151,7 @@ class ContactIndex extends React.Component {
                   handleAddContact={this.handleAddContact}
                   selectedContact={this.state.selectedContact}
                   isUpdating={this.state.isUpdating}
+                  cancelUpdateContact={this.cancelUpdateContact}
                 ></AddContact>
               </div>
             </div>

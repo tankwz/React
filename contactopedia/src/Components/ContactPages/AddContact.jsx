@@ -25,6 +25,9 @@ class AddContact extends React.Component {
       this.setState({ errorMessage: response.msg, successMessage: undefined });
     }
   };
+  cancelUpdate = () => {
+    this.props.cancelUpdateContact();
+  };
   render() {
     return (
       <div className="border rounded  col-12 p-2">
@@ -42,6 +45,9 @@ class AddContact extends React.Component {
                 type="form-control form-control-sm"
                 placeholder="Name"
                 name="contactName"
+                defaultValue={
+                  this.props.isUpdating ? this.props.selectedContact.name : ''
+                }
               />
             </div>
             <div className="col-12 col-md-4 p-1">
@@ -49,6 +55,9 @@ class AddContact extends React.Component {
                 type="form-control form-control-sm"
                 placeholder="Email"
                 name="contactEmail"
+                defaultValue={
+                  this.props.isUpdating ? this.props.selectedContact.email : ''
+                }
               />
             </div>
             <div className="col-12 col-md-4 p-1">
@@ -56,6 +65,9 @@ class AddContact extends React.Component {
                 type="form-control form-control-sm"
                 placeholder="Phone"
                 name="contactPhone"
+                defaultValue={
+                  this.props.isUpdating ? this.props.selectedContact.phone : ''
+                }
               />
             </div>
 
@@ -74,10 +86,24 @@ class AddContact extends React.Component {
               </div>
             )}
 
-            <div>
+            <div
+              className={`col-12 ${
+                this.props.isUpdating ? 'col-md-6' : 'col-md-8 offset-2'
+              }`}
+            >
               <button className="btn btn-primary btn-sm form-control">
                 Create
               </button>
+            </div>
+            <div className={`col-12 col-md-6`}>
+              {this.props.isUpdating && (
+                <button
+                  onClick={this.cancelUpdate}
+                  className="btn btn-secondary  btn-sm form-control "
+                >
+                  Cancel
+                </button>
+              )}
             </div>
           </div>
         </form>
