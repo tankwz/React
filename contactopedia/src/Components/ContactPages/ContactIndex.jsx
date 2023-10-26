@@ -36,13 +36,13 @@ class ContactIndex extends React.Component {
     };
   }
   handleAddContact = (newContact) => {
-    if (newContact.name == '') {
+    if (newContact.name === '') {
       return { status: 'failure', msg: 'Please Enter a valid name' };
-    } else if (newContact.phone == '') {
+    } else if (newContact.phone === '') {
       return { status: 'failure', msg: 'Please Enter a valid Number' };
     }
     const duplicateRecord = this.state.contactList.filter((x) => {
-      if (x.name == newContact.name && x.phone == newContact.phone) {
+      if (x.name === newContact.name && x.phone === newContact.phone) {
         return true;
       }
     });
@@ -62,6 +62,19 @@ class ContactIndex extends React.Component {
       });
     }
     return { status: 'success', msg: 'Contact was added successfully' };
+  };
+  handleToggleFav = (contact) => {
+    this.setState((prevS) => {
+      return {
+        contactList: prevS.contactList.map((item, index) => {
+          if (item.id === contact.id) {
+            return { ...item, isFav: !item.isFav };
+          }
+          return item;
+        }),
+      };
+    });
+    console.log(contact);
   };
 
   render() {
@@ -87,8 +100,9 @@ class ContactIndex extends React.Component {
               <div className="col-8 offset-2 row ">
                 <FavContacts
                   contacts={this.state.contactList.filter(
-                    (a) => a.isFav == true
+                    (a) => a.isFav === true
                   )}
+                  handleToggleFav={this.handleToggleFav}
                 ></FavContacts>
               </div>
             </div>
@@ -96,8 +110,9 @@ class ContactIndex extends React.Component {
               <div className="col-8 offset-2 row ">
                 <GeneralContacts
                   contacts={this.state.contactList.filter(
-                    (a) => a.isFav == false
+                    (a) => a.isFav === false
                   )}
+                  handleToggleFav={this.handleToggleFav}
                 ></GeneralContacts>
               </div>
             </div>
