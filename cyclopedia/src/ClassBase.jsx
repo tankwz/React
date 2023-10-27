@@ -33,10 +33,34 @@ class ClassBase extends React.Component {
 
     //console.log(response);
   };
-  componentDidUpdate() {
+  componentDidUpdate = async (previousProps, previousState) => {
     console.log('componentDidUpdate');
     localStorage.setItem('cyclopediaState', JSON.stringify(this.state));
-  }
+    console.log(previousState.studentCount);
+    console.log(this.state.studentCount);
+    if (previousState.studentCount < this.state.studentCount) {
+      const response = await getRandomUser();
+      this.setState((prevS) => {
+        return {
+          studentList: [
+            ...prevS.studentList,
+            {
+              name: response.data.first_name + ' ' + response.data.last_name,
+            },
+          ],
+        };
+      });
+      console.log(this.state.studentList);
+    } else if (previousState.studentCount > this.state.studentCount) {
+      console.log(previousState.studentCount + ' - ' + this.state.studentCount);
+      this.setState((prevS) => {
+        return {
+          studentList: prevS.studentList.slice(0, -1),
+        };
+        //here
+      });
+    }
+  };
   componentWillUnmount() {
     console.log('componentWillUnmount');
   }
@@ -46,8 +70,8 @@ class ClassBase extends React.Component {
     });
   };
   handleRemoveAll = () => {
-    this.setState(() => {
-      return { studentCount: 0 };
+    this.setState((prevS) => {
+      return { studentCount: prevS.studentCount - 1 };
     });
   };
   handleToggleInstructor = () => {
@@ -116,6 +140,9 @@ class ClassBase extends React.Component {
             >
               Remove All Student{' '}
             </button>
+            {this.state.studentList.map((item, index) => (
+              <div key={index}>{item.name}</div>
+            ))}
           </div>
         </div>
       </div>
