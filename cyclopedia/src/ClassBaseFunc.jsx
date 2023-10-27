@@ -16,6 +16,24 @@ const ClassBaseFunc = () => {
   const [inputFeedback, setInputFeedback] = useState(() => '');
 
   useEffect(() => {
+    const getUser = async () => {
+      const respone = await getRandomUser();
+      setState((preV) => ({
+        ...preV,
+        studentList: [
+          ...preV.studentList,
+          {
+            name: respone.data.first_name + ' ' + respone.data.last_name,
+          },
+        ],
+      }));
+    };
+    if (state.studentCount > state.studentList.length) {
+      getUser();
+      console.log(state.studentList);
+    }
+  }, [state.studentCount]);
+  useEffect(() => {
     console.log('This will be call every render');
   });
   useEffect(() => {
@@ -48,16 +66,19 @@ const ClassBaseFunc = () => {
       console.log('this will be call when component unmount');
     };
   }, []);
+
   const handleAddStudent = () => {
     setState((preV) => {
       return { ...preV, studentCount: preV.studentCount + 1 };
     });
   };
+
   const handleRemoveAll = () => {
     setState((prevS) => {
       return { ...prevS, studentCount: prevS.studentCount - 1 };
     });
   };
+
   const handleToggleInstructor = () => {
     setState((preV) => {
       return {
