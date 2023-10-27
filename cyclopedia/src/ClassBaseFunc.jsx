@@ -48,67 +48,6 @@ const ClassBaseFunc = () => {
       console.log('this will be call when component unmount');
     };
   }, []);
-  // constructor(props) {
-  //   super(props);
-  //   this.state = JSON.parse(localStorage.getItem('cyclopediaState')) || {
-  //     instructor: undefined,
-  //     studentList: [],
-  //     studentCount: 0,
-  //     hideInstructor: false,
-  //     inputName: '',
-  //     inputFeedBack: '',
-  //   };
-  // }
-  // componentDidMount = async () => {
-  //   console.log('componentDidMount');
-
-  //   if (JSON.parse(localStorage.getItem('cyclopediaState'))) {
-  //   } else {
-  //     const response = await getRandomUser();
-  //     this.setState((preV) => {
-  //       return {
-  //         instructor: {
-  //           name: response.data.first_name + ' ' + response.data.first_name,
-  //           email: response.data.email,
-  //           phone: response.data.phone_number,
-  //         },
-  //       };
-  //     });
-  //   }
-
-  //   //console.log(response);
-  // };
-  // componentDidUpdate = async (previousProps, previousState) => {
-  //   console.log('componentDidUpdate');
-  //   // localStorage.setItem('cyclopediaState', JSON.stringify(this.state));
-  //   console.log(previousState.studentCount);
-  //   console.log(this.state.studentCount);
-  //   if (previousState.studentCount < this.state.studentCount) {
-  //     const response = await getRandomUser();
-  //     this.setState((prevS) => {
-  //       return {
-  //         studentList: [
-  //           ...prevS.studentList,
-  //           {
-  //             name: response.data.first_name + ' ' + response.data.last_name,
-  //           },
-  //         ],
-  //       };
-  //     });
-  //     console.log(this.state.studentList);
-  //   } else if (previousState.studentCount > this.state.studentCount) {
-  //     console.log(previousState.studentCount + ' - ' + this.state.studentCount);
-  //     this.setState((prevS) => {
-  //       return {
-  //         studentList: prevS.studentList.slice(0, -1),
-  //       };
-  //       //here
-  //     });
-  //   }
-  // };
-  // componentWillUnmount() {
-  //   console.log('componentWillUnmount');
-  // }
   const handleAddStudent = () => {
     setState((preV) => {
       return { ...preV, studentCount: preV.studentCount + 1 };
