@@ -33,8 +33,10 @@ const ClassBaseFunc = () => {
         };
       });
     };
-    getUser();
-  }, []);
+    if (state.hideInstructor) {
+      getUser();
+    }
+  }, [state.hideInstructor]);
   useEffect(() => {
     console.log(
       'This will be call whenever the value of the state inside the array change'
