@@ -1,5 +1,6 @@
 import React from 'react';
 import { getRandomUser } from './Util/api';
+import Instructor from './Instructor';
 
 class ClassBase extends React.Component {
   constructor(props) {
@@ -49,21 +50,36 @@ class ClassBase extends React.Component {
       return { studentCount: 0 };
     });
   };
+  handleToggleInstructor = () => {
+    this.setState((preV) => {
+      return {
+        hideInstructor: !preV.hideInstructor,
+      };
+    });
+  };
 
   render() {
     console.log('render--------------');
     return (
       <div className="container mt-5">
         <div className="row">
-          {this.state.instructor && (
-            <div className="col-12">
-              <h5 className="text-info">Instructor</h5>
-              <p>Name: {this.state.instructor.name}</p>
-              <p>Email: {this.state.instructor.email}</p>
-              <p>Phone: {this.state.instructor.phone}</p>
-              <i className=" bi bi-toggle-off btn btn-success btn-sml"></i>
-            </div>
-          )}
+          <div className="rol-3">
+            <i
+              onClick={this.handleToggleInstructor}
+              className={` bi ${
+                this.state.hideInstructor ? 'bi-toggle-off ' : 'bi-toggle-on '
+              } btn btn-success btn-sml`}
+            ></i>
+          </div>
+          {!this.state.hideInstructor
+            ? this.state.instructor && (
+                <Instructor
+                  instructor={this.state.instructor}
+                  handleToggleInstructor={this.handleToggleInstructor}
+                ></Instructor>
+              )
+            : null}
+
           <div>
             <span className="h4 text-success ">FeedBack</span>
             <br />
