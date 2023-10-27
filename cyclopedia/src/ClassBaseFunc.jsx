@@ -2,6 +2,8 @@ import React from 'react';
 import { getRandomUser } from './Util/api';
 import Instructor from './Instructor';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import InstructorFunc from './InstructorFunc';
 
 const ClassBaseFunc = () => {
   const [state, setState] = useState(() => ({
@@ -13,6 +15,37 @@ const ClassBaseFunc = () => {
   const [inputName, setInputName] = useState(() => '');
   const [inputFeedback, setInputFeedback] = useState(() => '');
 
+  useEffect(() => {
+    console.log('This will be call every render');
+  });
+  useEffect(() => {
+    console.log('This will be call only the first time');
+    const getUser = async () => {
+      const response = await getRandomUser();
+      setState((preV) => {
+        return {
+          ...preV,
+          instructor: {
+            name: response.data.first_name + ' ' + response.data.first_name,
+            email: response.data.email,
+            phone: response.data.phone_number,
+          },
+        };
+      });
+    };
+    getUser();
+  }, []);
+  useEffect(() => {
+    console.log(
+      'This will be call whenever the value of the state inside the array change'
+    );
+  }, [inputFeedback]);
+  useEffect(() => {
+    console.log('this will be call first time-2');
+    return () => {
+      console.log('this will be call when component unmount');
+    };
+  }, []);
   // constructor(props) {
   //   super(props);
   //   this.state = JSON.parse(localStorage.getItem('cyclopediaState')) || {
@@ -107,10 +140,10 @@ const ClassBaseFunc = () => {
         </div>
         {!state.hideInstructor
           ? state.instructor && (
-              <Instructor
+              <InstructorFunc
                 instructor={state.instructor}
                 handleToggleInstructor={handleToggleInstructor}
-              ></Instructor>
+              ></InstructorFunc>
             )
           : null}
 
