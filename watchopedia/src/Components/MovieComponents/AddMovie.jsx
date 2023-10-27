@@ -7,6 +7,9 @@ const AddMovie = (props) => {
   const submit = (e, props) => {
     e.preventDefault();
     props.addMovie(movieNameState.MovieName);
+    movieNameEdit(() => ({
+      MovieName: '',
+    }));
   };
 
   return (
