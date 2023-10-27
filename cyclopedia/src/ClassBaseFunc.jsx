@@ -30,7 +30,12 @@ const ClassBaseFunc = () => {
     };
     if (state.studentCount > state.studentList.length) {
       getUser();
-      console.log(state.studentList);
+    }
+    if (state.studentCount < state.studentList.length) {
+      setState((preV) => ({
+        ...preV,
+        studentList: state.studentList.slice(0, -1),
+      }));
     }
   }, [state.studentCount]);
   useEffect(() => {
