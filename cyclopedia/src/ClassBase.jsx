@@ -35,7 +35,7 @@ class ClassBase extends React.Component {
   };
   componentDidUpdate = async (previousProps, previousState) => {
     console.log('componentDidUpdate');
-    localStorage.setItem('cyclopediaState', JSON.stringify(this.state));
+    // localStorage.setItem('cyclopediaState', JSON.stringify(this.state));
     console.log(previousState.studentCount);
     console.log(this.state.studentCount);
     if (previousState.studentCount < this.state.studentCount) {
