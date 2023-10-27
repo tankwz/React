@@ -4,7 +4,7 @@ import { getRandomUser } from './Util/api';
 class ClassBase extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = JSON.parse(localStorage.getItem('cyclopediaState')) || {
       instructor: undefined,
       studentList: [],
       studentCount: 0,
@@ -15,20 +15,26 @@ class ClassBase extends React.Component {
   }
   componentDidMount = async () => {
     console.log('componentDidMount');
-    const response = await getRandomUser();
-    this.setState((preV) => {
-      return {
-        instructor: {
-          name: response.data.first_name + ' ' + response.data.first_name,
-          email: response.data.email,
-          phone: response.data.phone_number,
-        },
-      };
-    });
+
+    if (JSON.parse(localStorage.getItem('cyclopediaState'))) {
+    } else {
+      const response = await getRandomUser();
+      this.setState((preV) => {
+        return {
+          instructor: {
+            name: response.data.first_name + ' ' + response.data.first_name,
+            email: response.data.email,
+            phone: response.data.phone_number,
+          },
+        };
+      });
+    }
+
     //console.log(response);
   };
   componentDidUpdate() {
     console.log('componentDidUpdate');
+    localStorage.setItem('cyclopediaState', JSON.stringify(this.state));
   }
   componentWillUnmount() {
     console.log('componentWillUnmount');
