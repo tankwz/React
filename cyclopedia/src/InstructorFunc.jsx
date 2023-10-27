@@ -4,12 +4,8 @@ import { useState } from 'react';
 
 const InstructorFunc = (props) => {
   useEffect(() => {
-    return () => {
-      console.log('instructor  will unmount');
-    };
+    return () => {};
   }, []);
-
-  console.log('render Instructor Func');
 
   return (
     <div className="col-12">

@@ -15,8 +15,6 @@ class ClassBase extends React.Component {
     };
   }
   componentDidMount = async () => {
-    console.log('componentDidMount');
-
     if (JSON.parse(localStorage.getItem('cyclopediaState'))) {
     } else {
       const response = await getRandomUser();
@@ -30,14 +28,8 @@ class ClassBase extends React.Component {
         };
       });
     }
-
-    //console.log(response);
   };
   componentDidUpdate = async (previousProps, previousState) => {
-    console.log('componentDidUpdate');
-    // localStorage.setItem('cyclopediaState', JSON.stringify(this.state));
-    console.log(previousState.studentCount);
-    console.log(this.state.studentCount);
     if (previousState.studentCount < this.state.studentCount) {
       const response = await getRandomUser();
       this.setState((prevS) => {
@@ -50,9 +42,7 @@ class ClassBase extends React.Component {
           ],
         };
       });
-      console.log(this.state.studentList);
     } else if (previousState.studentCount > this.state.studentCount) {
-      console.log(previousState.studentCount + ' - ' + this.state.studentCount);
       this.setState((prevS) => {
         return {
           studentList: prevS.studentList.slice(0, -1),
@@ -61,9 +51,7 @@ class ClassBase extends React.Component {
       });
     }
   };
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-  }
+  componentWillUnmount() {}
   handleAddStudent = () => {
     this.setState((preV) => {
       return { studentCount: preV.studentCount + 1 };
@@ -83,7 +71,6 @@ class ClassBase extends React.Component {
   };
 
   render() {
-    console.log('render--------------');
     return (
       <div className="container mt-5">
         <div className="row">

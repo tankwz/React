@@ -4,18 +4,8 @@ class Instructor extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount = () => {
-    console.log('componentDidMount Instructor');
-  };
-  componentDidUpdate = () => {
-    console.log('componentDidUpdate Instructor');
-  };
-  componentWillUnmount = () => {
-    console.log('componentWillUnmount Instructor');
-  };
-  render() {
-    console.log('render Instructor');
 
+  render() {
     return (
       <div className="col-12">
         <h5 className="text-info">Instructor</h5>

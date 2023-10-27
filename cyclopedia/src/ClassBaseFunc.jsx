@@ -38,11 +38,8 @@ const ClassBaseFunc = () => {
       }));
     }
   }, [state.studentCount]);
+  useEffect(() => {});
   useEffect(() => {
-    console.log('This will be call every render');
-  });
-  useEffect(() => {
-    console.log('This will be call only the first time');
     const getUser = async () => {
       const response = await getRandomUser();
       setState((preV) => {
@@ -60,16 +57,9 @@ const ClassBaseFunc = () => {
       getUser();
     }
   }, [state.hideInstructor]);
+  useEffect(() => {}, [inputFeedback]);
   useEffect(() => {
-    console.log(
-      'This will be call whenever the value of the state inside the array change'
-    );
-  }, [inputFeedback]);
-  useEffect(() => {
-    console.log('this will be call first time-2');
-    return () => {
-      console.log('this will be call when component unmount');
-    };
+    return () => {};
   }, []);
 
   const handleAddStudent = () => {
@@ -93,7 +83,6 @@ const ClassBaseFunc = () => {
     });
   };
 
-  console.log('render--------------');
   return (
     <div className="container mt-5">
       <div className="row">
