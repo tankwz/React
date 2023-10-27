@@ -3,18 +3,6 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const InstructorFunc = (props) => {
-  // constructor(props) {
-  //   super(props);
-  // }
-  // componentDidMount = () => {
-  //   console.log('componentDidMount Instructor');
-  // };
-  // componentDidUpdate = () => {
-  //   console.log('componentDidUpdate Instructor');
-  // };
-  // componentWillUnmount = () => {
-  //   console.log('componentWillUnmount Instructor');
-  // };
   useEffect(() => {
     return () => {
       console.log('instructor  will unmount');
