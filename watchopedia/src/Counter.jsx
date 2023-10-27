@@ -1,26 +1,27 @@
 import { useState } from 'react';
 
 const Counter = () => {
-  const [counter, setCounter] = useState(() => {
+  const [counterState, setCounter] = useState(() => {
     return {
       counter: 10,
     };
   });
+  const [titleState, setTitle] = useState(() => ({
+    title: 'Fun',
+  }));
 
   const increment = () => {
     setCounter((prevC) => {
-      return { counter: prevC.counter + 1 };
+      return { ...prevC, counter: prevC.counter + 1 };
     });
   };
   const decrement = () => {
-    setCounter((prevC) => ({
-      counter: prevC.counter - 1,
-    }));
+    setCounter((prevC) => ({ ...prevC, counter: prevC.counter - 1 }));
   };
 
   return (
     <div className="col-12 col-md-4 offset-md-4 border">
-      <span className="h2">Counter</span>
+      <span className="h2"> {titleState.title} Counter</span>
       <br />
       <button className="btn btn-danger m-1" onClick={() => decrement()}>
         -1
@@ -31,7 +32,7 @@ const Counter = () => {
 
       <br />
       <span className="h4">Counter &nbsp;</span>
-      <span className="text-success">{counter}</span>
+      <span className="text-success">{counterState.counter}</span>
     </div>
   );
 };
