@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId, useRef } from 'react';
 import { getRandomUser } from './Util/api';
 import Instructor from './Instructor';
 import { useState } from 'react';
@@ -14,7 +14,11 @@ const ClassBaseFunc = () => {
   }));
   const [inputName, setInputName] = useState(() => '');
   const [inputFeedback, setInputFeedback] = useState(() => '');
+  const totalRender = useRef(0);
+  const feedbackInputref = useRef(null);
 
+  const prevStudentCount = useRef(0);
+  const id = useId();
   useEffect(() => {
     const getUser = async () => {
       const respone = await getRandomUser();
@@ -28,17 +32,28 @@ const ClassBaseFunc = () => {
         ],
       }));
     };
-    if (state.studentCount > state.studentList.length) {
+    if (state.studentCount > prevStudentCount.current) {
       getUser();
     }
-    if (state.studentCount < state.studentList.length) {
+    if (state.studentCount < prevStudentCount.current) {
       setState((preV) => ({
         ...preV,
         studentList: state.studentList.slice(0, -1),
       }));
     }
   }, [state.studentCount]);
-  useEffect(() => {});
+
+  useEffect(() => {
+    console.log(prevStudentCount.current + ' ' + state.studentCount);
+    prevStudentCount.current = state.studentCount;
+    console.log(prevStudentCount.current + ' ' + state.studentCount);
+  }, [state.studentCount]);
+
+  useEffect(() => {
+    totalRender.current += 1;
+    console.log('total render: ' + totalRender.current);
+    feedbackInputref.current.focus();
+  });
   useEffect(() => {
     const getUser = async () => {
       const response = await getRandomUser();
@@ -53,7 +68,7 @@ const ClassBaseFunc = () => {
         };
       });
     };
-    if (state.hideInstructor) {
+    if (!state.hideInstructor) {
       getUser();
     }
   }, [state.hideInstructor]);
@@ -102,11 +117,14 @@ const ClassBaseFunc = () => {
               ></InstructorFunc>
             )
           : null}
-
+        <div className="p-3">{totalRender.current}</div>
         <div>
-          <span className="h4 text-success ">FeedBack</span>
+          <label className="h4 text-success" htmlFor={`${id}`}>
+            FeedBack
+          </label>
           <br />
           <input
+            id={id}
             type="text"
             value={inputName}
             onChange={(e) => {
@@ -120,6 +138,7 @@ const ClassBaseFunc = () => {
             id=""
             value={inputFeedback}
             onChange={(e) => setInputFeedback(e.target.value)}
+            ref={feedbackInputref}
           ></textarea>
           Value: {inputFeedback}
         </div>
