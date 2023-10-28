@@ -83,7 +83,7 @@ function Header() {
                 >
                   Product
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
                     <Link className="dropdown-item" to="/product/">
                       Product
@@ -114,12 +114,7 @@ function Header() {
                 </ul>
               </li>
               <li className="nav-item">
-                <a
-                  className="nav-link disabled"
-                  href="#"
-                  tabindex="-1"
-                  aria-disabled="true"
-                >
+                <a className="nav-link disabled" href="#" aria-disabled="true">
                   Disabled
                 </a>
               </li>
