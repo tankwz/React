@@ -51,6 +51,11 @@ function Header() {
                   About
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cryptodetail/btc/10">
+                  Crypto Detail
+                </Link>
+              </li>
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"

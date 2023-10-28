@@ -9,6 +9,8 @@ import CreateProduct from './Pages/CreateProduct';
 import Product from './Pages/Product';
 import ProductDetails from './Pages/ProductDetails';
 import ProductList from './Pages/ProductList';
+import NotFound from './Components/Layout/NotFound';
+import CryptoDetail from './Components/Layout/CryptoDetail';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -31,6 +33,11 @@ root.render(
           path="/product/list"
           element={<ProductList></ProductList>}
         ></Route> */}
+        <Route
+          path="/cryptodetail/:cryptoSymbol/:day?"
+          element={<CryptoDetail></CryptoDetail>}
+        ></Route>
+
         <Route path="product">
           <Route path="" element={<Product></Product>}></Route>
           <Route
@@ -43,6 +50,7 @@ root.render(
           ></Route>
           <Route path="list" element={<ProductList></ProductList>}></Route>
         </Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </BrowserRouter>
   </div>
