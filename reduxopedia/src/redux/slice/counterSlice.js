@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { resetAction } from '../action/resetAction';
 const initialState = { count: 10 };
 export const counterSlice = createSlice({
   name: 'counter',
@@ -17,6 +18,11 @@ export const counterSlice = createSlice({
     divide: (state, action) => {
       state.count /= action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(resetAction, (state, action) => {
+      state.count = initialState.count;
+    });
   },
 });
 

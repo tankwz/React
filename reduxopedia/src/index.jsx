@@ -7,10 +7,12 @@ import { Provider } from 'react-redux';
 import Counter from './app/layout/components/Counter';
 import Destination from './app/layout/components/Destination';
 import DestinationDetail from './app/layout/components/DestinationDetail';
+import Reset from './app/layout/components/Reset';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <Header></Header>
+    <Reset></Reset>
     <Counter></Counter>
     <Destination></Destination>
     <DestinationDetail></DestinationDetail>
