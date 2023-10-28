@@ -18,7 +18,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
-        <Route path="/product" element={<Product></Product>}></Route>
+        {/* <Route path="/product" element={<Product></Product>}></Route>
         <Route
           path="/product/create"
           element={<CreateProduct></CreateProduct>}
@@ -30,18 +30,19 @@ root.render(
         <Route
           path="/product/list"
           element={<ProductList></ProductList>}
-        ></Route>
-        {/* <Route path="/product" element={<Product></Product>}>
+        ></Route> */}
+        <Route path="product">
+          <Route path="" element={<Product></Product>}></Route>
           <Route
-            path="/create"
+            path="create"
             element={<CreateProduct></CreateProduct>}
           ></Route>
           <Route
-            path="/details"
+            path="details"
             element={<ProductDetails></ProductDetails>}
           ></Route>
-          <Route path="/list" element={<ProductList></ProductList>}></Route>
-        </Route> */}
+          <Route path="list" element={<ProductList></ProductList>}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   </div>
