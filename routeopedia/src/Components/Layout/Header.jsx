@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logo from '../../img/react.png';
 
 // export default () => {
@@ -41,14 +42,14 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link className="nav-link active" aria-current="page" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
+                <Link className="nav-link" to="/about">
+                  About
+                </Link>
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -59,26 +60,35 @@ function Header() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Dropdown
+                  Product
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
+                    <Link className="dropdown-item" to="/product/">
+                      Product
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
+                    <Link className="dropdown-item" to="/product/create">
+                      Create Product
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/product/details/">
+                      Product Details
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/product/list/">
+                      {' '}
+                      Product List{' '}
+                    </Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider"></hr>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
+                    <Link className="dropdown-item">Something else here</Link>
                   </li>
                 </ul>
               </li>
