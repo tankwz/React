@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../img/react.png';
 
 // export default () => {
@@ -42,19 +42,35 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? 'nav-link active text-info' : 'nav-link'
+                  }
+                  aria-current="page"
+                  to="/"
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/about">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? 'nav-link active text-info' : 'nav-link'
+                  }
+                  to="/about"
+                >
                   About
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/cryptodetail/btc/10">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? 'nav-link active text-info' : 'nav-link'
+                  }
+                  to="/cryptodetail/btc/10"
+                >
                   Crypto Detail
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item dropdown">
                 <a

@@ -34,7 +34,7 @@ root.render(
           element={<ProductList></ProductList>}
         ></Route> */}
         <Route
-          path="/cryptodetail/:cryptoSymbol/:day?"
+          path="/cryptodetail/:cryptoSymbol?/:day?"
           element={<CryptoDetail></CryptoDetail>}
         ></Route>
 
@@ -45,7 +45,7 @@ root.render(
             element={<CreateProduct></CreateProduct>}
           ></Route>
           <Route
-            path="details"
+            path="details/:id?"
             element={<ProductDetails></ProductDetails>}
           ></Route>
           <Route path="list" element={<ProductList></ProductList>}></Route>
