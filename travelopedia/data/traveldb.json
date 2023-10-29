@@ -1,9 +1,28 @@
 {
   "destination": [
-    { "id": 1, "name": "Hong Kong", "price": "50$", "day": 7 },
-
-    { "id": 2, "name": "New York", "price": "40$", "day": 7 },
-
-    { "id": 3, "name": "Hong Kong", "price": "30$", "day": 7 }
+    {
+      "id": 1,
+      "name": "Hong Kong",
+      "price": "50$",
+      "day": 7
+    },
+    {
+      "id": 2,
+      "name": "New York",
+      "price": "40$",
+      "day": 7
+    },
+    {
+      "id": 3,
+      "name": "Hong Kong",
+      "price": "30$",
+      "day": 7
+    },
+    {
+      "id": 0.8382553332012305,
+      "name": "qwe",
+      "price": "qwe",
+      "day": 7
+    }
   ]
 }
