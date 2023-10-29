@@ -10,8 +10,10 @@ import { useState } from 'react';
 function Counter() {
   //const count = useSelector((state) => state.counterStore.count);
   const count = useSelector((state) => state.counterStoreName.count);
+  const cnum = useSelector((state) => state.counterStoreName.numb);
+
   const disp = useDispatch();
-  const [calNumber, changeCalNumber] = useState(() => 10);
+  const [calNumber, changeCalNumber] = useState(() => cnum);
   return (
     <div className="container">
       <div className="row">
