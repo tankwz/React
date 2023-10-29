@@ -1,0 +1,9 @@
+{
+  "destination": [
+    { "id": 1, "name": "Hong Kong", "day": 7 },
+
+    { "id": 2, "name": "New York", "day": 7 },
+
+    { "id": 3, "name": "Hong Kong", "day": 7 }
+  ]
+}
