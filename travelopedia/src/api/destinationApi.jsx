@@ -25,8 +25,20 @@ export const destinationApi = createApi({
       }),
       invalidatesTags: ['Destinations'],
     }),
+    updateDes: builder.mutation({
+      query: (destination) => ({
+        url: `destination/${destination.id}`,
+        method: 'PUT',
+        body: destination,
+      }),
+      invalidatesTags: ['Destinations'],
+    }),
   }),
 });
 
-export const { useGetAllDesQuery, useAddNewDesMutation, useDeleteDesMutation } =
-  destinationApi;
+export const {
+  useGetAllDesQuery,
+  useAddNewDesMutation,
+  useDeleteDesMutation,
+  useUpdateDesMutation,
+} = destinationApi;

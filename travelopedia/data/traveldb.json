@@ -8,20 +8,32 @@
     },
     {
       "id": 2,
-      "name": "New York",
-      "price": "40$",
-      "day": 7
+      "name": "Neew Yorrk",
+      "day": "7",
+      "price": "40$"
     },
     {
       "id": 3,
-      "name": "Hong Kong",
-      "price": "30$",
-      "day": 7
+      "name": "Hong Koneg",
+      "day": "7",
+      "price": "30$"
     },
     {
-      "id": 0.8382553332012305,
-      "name": "qwe",
-      "price": "qwe",
+      "id": 0.9663369493621147,
+      "name": "u",
+      "day": "589",
+      "price": "856"
+    },
+    {
+      "id": 0.7295823968245096,
+      "name": "qe",
+      "day": "7e",
+      "price": "qe"
+    },
+    {
+      "id": 0.9444088045943773,
+      "name": "asd",
+      "price": "asd",
       "day": 7
     }
   ]
