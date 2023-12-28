@@ -1,6 +1,4 @@
 export default function Student(props) {
-  const fullName = 'Kris Walley';
-  const exp = 2;
   return (
     <div className="col-4 p-4 ">
       <div className="row border">

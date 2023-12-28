@@ -14,25 +14,25 @@ export default class Counter extends React.Component {
   }
   attack = () => {
     this.setState((state) => {
-      let newc = state.count + Math.round(Math.random() * 10);
+      let newCount = state.count + Math.round(Math.random() * 10);
       return {
-        count: newc,
-        result: newc > 10 ? 'win' : state.result,
+        count: newCount,
+        result: newCount > 10 ? 'win' : state.result,
         previous: 'attack',
       };
     });
   };
   defense = () => {
     this.setState((previousS) => {
-      let newcount = previousS.count - Math.round(Math.random() * 10);
+      let newCount2 = previousS.count - Math.round(Math.random() * 10);
       return {
-        count: newcount,
-        result: newcount < -10 ? 'lost' : previousS.result,
+        count: newCount2,
+        result: newCount2 < -10 ? 'lost' : previousS.result,
         previous: 'defense',
       };
     });
   };
-  rando = () => {
+  random = () => {
     this.setState((previous) => {
       if (Math.round(Math.random()) == 1) {
         this.attack();
@@ -41,10 +41,10 @@ export default class Counter extends React.Component {
       }
     });
   };
-  keepgo = () => {
+  keepGo = () => {
     this.setState((previous) => {
       for (var a = 0; a < 10; a++) {
-        this.rando();
+        this.random();
       }
     });
   };
@@ -99,10 +99,10 @@ export default class Counter extends React.Component {
             <div className="col-12 "></div>
             <div className="col-4 mt-3">
               <button
-                onClick={this.rando}
+                onClick={this.random}
                 className="btn btn-info form-control"
               >
-                Rando
+                Random
               </button>
             </div>
             <div className="col-12"></div>
