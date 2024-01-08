@@ -49,7 +49,7 @@ class ContactIndex extends React.Component {
       }
     });
     if (duplicateRecord.length > 0) {
-      return { status: 'failre', msg: 'Duplicate Record' };
+      return { status: 'failure', msg: 'Duplicate Record' };
     } else {
       const newFinalContact = {
         ...newContact,

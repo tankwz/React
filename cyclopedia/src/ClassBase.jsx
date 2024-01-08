@@ -15,6 +15,7 @@ class ClassBase extends React.Component {
     };
   }
   componentDidMount = async () => {
+    console.log('did mount base');
     if (JSON.parse(localStorage.getItem('cyclopediaState'))) {
     } else {
       const response = await getRandomUser();
@@ -30,6 +31,8 @@ class ClassBase extends React.Component {
     }
   };
   componentDidUpdate = async (previousProps, previousState) => {
+    console.log('did mount update base');
+
     if (previousState.studentCount < this.state.studentCount) {
       const response = await getRandomUser();
       this.setState((prevS) => {
@@ -71,6 +74,7 @@ class ClassBase extends React.Component {
   };
 
   render() {
+    console.log('render base');
     return (
       <div className="container mt-5">
         <div className="row">
